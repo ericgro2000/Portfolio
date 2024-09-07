@@ -1,4 +1,5 @@
 
+import Hero from './widgets/Navbar/Hero'
 import Navbar from './widgets/Navbar/Navbar'
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
   return (
     <main className="max-w-7xl mx-auto relative">
     <Navbar />
+    <Hero/>
   </main>
   )
 }
