@@ -1,5 +1,5 @@
-import * as THREE from 'three'
-import React, { useRef } from 'react'
+// import * as THREE from 'three'
+// import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 // import { GLTF } from 'three-stdlib'
 
@@ -13,7 +13,7 @@ import { useGLTF } from '@react-three/drei'
 // }
 
 export function Desk(props: any) {
-  const { nodes, materials } = useGLTF('/models/scene.gltf') as any
+  const { nodes, materials } = useGLTF('/models/lowqRoom/scene.gltf') as any
   return (
     <group {...props} dispose={null}>
       <mesh
@@ -28,5 +28,5 @@ export function Desk(props: any) {
   )
 }
 
-useGLTF.preload('/models/scene.gltf')
+useGLTF.preload('/models/lowqRoom/scene.gltf')
 

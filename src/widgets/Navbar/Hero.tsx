@@ -7,6 +7,7 @@ import CanvasLoader from '../../shared/Skeletons/Canvas';
 import { Desk } from '../../features/Desk';
 import useCalculateSizes from '../../shared/consts/Sizes';
 import HeroCamera from '../../features/HeroCamera';
+import Target from '../../features/Target';
 
 const Hero = () => {
   
@@ -37,14 +38,14 @@ const Hero = () => {
             </HeroCamera>
 
             <group>
-              {/* <Target position={sizes.targetPosition} />
-              <ReactLogo position={sizes.reactLogoPosition} />
+              <Target position={sizes.targetPosition} />
+              {/* <ReactLogo position={sizes.reactLogoPosition} />
               <Rings position={sizes.ringPosition} />
               <Cube position={sizes.cubePosition} /> */}
             </group>
 
             <ambientLight intensity={0.49} color={"orange"}/>
-            <directionalLight position={[10, 3, 9]} intensity={6} />
+            <directionalLight position={[25, 3, 9]} intensity={6} />
           </Suspense>
         </Canvas>
       </div>
