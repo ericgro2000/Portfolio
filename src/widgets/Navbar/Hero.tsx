@@ -8,6 +8,7 @@ import { Desk } from '../../features/Desk';
 import useCalculateSizes from '../../shared/consts/Sizes';
 import HeroCamera from '../../features/HeroCamera';
 import Target from '../../features/Target';
+import Cube from '../../features/Cube';
 
 const Hero = () => {
   
@@ -40,8 +41,8 @@ const Hero = () => {
             <group>
               <Target position={sizes.targetPosition} />
               {/* <ReactLogo position={sizes.reactLogoPosition} />
-              <Rings position={sizes.ringPosition} />
-              <Cube position={sizes.cubePosition} /> */}
+              <Rings position={sizes.ringPosition} />*/}
+              <Cube position={sizes.cubePosition} /> 
             </group>
 
             <ambientLight intensity={0.49} color={"orange"}/>
