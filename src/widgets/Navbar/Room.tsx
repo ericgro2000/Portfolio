@@ -36,9 +36,9 @@ const Hero = () => {
             <Stars
               radius={100}   // Radius of the star field
               depth={50}     // Depth of star field
-              count={5000}   // Number of stars
-              factor={8}     // Size factor for the stars
-              saturation={0} // Star color saturation
+              count={50000}   // Number of stars
+              factor={3}     // Size factor for the stars
+              saturation={0.2} // Star color saturation
               fade={true}    // Whether stars should fade when moving away
             />
 
