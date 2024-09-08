@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 export const useCalculateSizes = (isSmall: boolean, isMobile: boolean, isTablet: boolean) => {
   return useMemo(() => {
     return {
-      deskScale: isSmall ? 1.55 : isMobile ? 1.56 : 1.565,
+      deskScale: isSmall ? 1.75 : isMobile ? 1.76 : 1.765,
       deskPosition: isMobile ? [0.5, -4.5, 0] : [0.25, -5.5, 0],
       cubePosition: isSmall ? [6, -5, 0] : isMobile ? [6, -5, 0] : isTablet ? [7, -5, 0] : [9, -5.5, 0],
       reactLogoPosition: isSmall ? [3, 4, 0] : isMobile ? [5, 4, 0] : isTablet ? [5, 4, 0] : [12, 3, 0],

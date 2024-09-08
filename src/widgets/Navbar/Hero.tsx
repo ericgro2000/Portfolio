@@ -33,7 +33,6 @@ const Hero = () => {
             <Leva hidden />
             <PerspectiveCamera makeDefault position={[0, 0, 30]} />
             
-            {/* Add Stars component for the starry night background */}
             <Stars
               radius={100}   // Radius of the star field
               depth={50}     // Depth of star field
