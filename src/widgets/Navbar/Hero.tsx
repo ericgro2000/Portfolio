@@ -9,6 +9,7 @@ import useCalculateSizes from '../../shared/consts/Sizes';
 import HeroCamera from '../../features/HeroCamera';
 import Target from '../../features/Target';
 import Cube from '../../features/Cube';
+import ReactLogo from '../../features/React';
 
 const Hero = () => {
   
@@ -40,8 +41,8 @@ const Hero = () => {
 
             <group>
               <Target position={sizes.targetPosition} />
-              {/* <ReactLogo position={sizes.reactLogoPosition} />
-              <Rings position={sizes.ringPosition} />*/}
+              <ReactLogo position={sizes.reactLogoPosition} />
+              {/* <Rings position={sizes.ringPosition} />*/}
               <Cube position={sizes.cubePosition} /> 
             </group>
 
