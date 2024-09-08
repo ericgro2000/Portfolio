@@ -12,7 +12,6 @@ const DemoComputer = (props) => {
   const { actions } = useAnimations(animations, group);
 
   const txt = useVideoTexture(props.texture ? props.texture : '/textures/project/project1.mp4');
-  
   useEffect(() => {
     if (txt) {
       txt.flipY = false;
@@ -20,9 +19,15 @@ const DemoComputer = (props) => {
   }, [txt]);
   
   useEffect(() => {
+    console.log(props)
+    if (props.direction==="previous") {
+      group.current.rotation.y = -2
+    } else {
+      group.current.rotation.y = 2
+    }
     anime({
       targets: group.current.rotation, // target the rotation object
-      y: Math.PI / 2,                  // set the desired end value for 'y'
+      y: 0,                  // set the desired end value for 'y'
       duration: 1000,                  // duration in milliseconds (1000ms = 1 second)
       easing: 'easeOutExpo'            // easing function similar to 'power3.out'
     });

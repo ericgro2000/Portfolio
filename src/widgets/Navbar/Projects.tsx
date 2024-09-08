@@ -12,6 +12,7 @@ const projectCount = myProjects.length;
 
 const Projects = () => {
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(0);
+  const [direction, setDirection] = useState(''); 
 
   const handleNavigation = (direction:string) => {
     setSelectedProjectIndex((prevIndex) => {
@@ -77,11 +78,17 @@ const Projects = () => {
           </div>
 
           <div className="flex justify-between items-center mt-7">
-            <button className="arrow-btn" onClick={() => handleNavigation('previous')}>
+            <button className="arrow-btn" onClick={() => ()=>{
+                setDirection('previous')
+                handleNavigation(direction)
+            }}>
               <img src="/assets/left-arrow.png" alt="left arrow" />
             </button>
 
-            <button className="arrow-btn" onClick={() => handleNavigation('next')}>
+            <button className="arrow-btn" onClick={() => ()=>{
+                setDirection('next')
+                handleNavigation(direction)
+            }}>
               <img src="/assets/right-arrow.png" alt="right arrow" className="w-4 h-4" />
             </button>
           </div>
@@ -94,7 +101,7 @@ const Projects = () => {
             <Center>
               <Suspense fallback={<CanvasLoader />}>
                 <group scale={2} position={[0, -3, 0]} rotation={[0, -0.1, 0]}>
-                  <DemoComputer texture={currentProject.texture} />
+                  <DemoComputer texture={currentProject.texture} direction={direction}/>
                 </group>
               </Suspense>
             </Center>
