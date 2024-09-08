@@ -1,3 +1,5 @@
+import { animatorManager } from "../../App";
+
 // AnimationManager handles a single requestAnimationFrame loop for all animators
 export class AnimationManager {
     static instance = null;
@@ -29,7 +31,6 @@ export class AnimationManager {
     }
   }
   
-  // SimpleAnimator class that now registers with AnimationManager
   export class SimpleAnimator {
     constructor(object) {
       this.object = object;
@@ -41,10 +42,11 @@ export class AnimationManager {
       this.repeat = 0;
       this.yoyo = false;
       this.active = false;
+      this.onComplete = null; // Callback function to execute on completion
       AnimationManager.instance.add(this); // Register with global manager
     }
   
-    to(properties, { duration = 1, repeat = 0, yoyo = false, ease = (t) => t }) {
+    to(properties, { duration = 1, repeat = 0, yoyo = false, ease = (t) => t, onComplete = null }) {
       this.startValues = {};
       this.endValues = properties;
       this.startTime = performance.now();
@@ -53,7 +55,9 @@ export class AnimationManager {
       this.repeat = repeat;
       this.yoyo = yoyo;
       this.active = true;
+      this.onComplete = onComplete; // Set the callback function
   
+      // Capture starting values
       Object.keys(properties).forEach((prop) => {
         this.startValues[prop] = this.object[prop];
       });
@@ -66,21 +70,34 @@ export class AnimationManager {
       const progress = Math.min(elapsed / this.duration, 1);
       const easedProgress = this.easing(progress);
   
+      // Interpolate between start and end values
       Object.keys(this.endValues).forEach((prop) => {
         const startValue = this.startValues[prop];
         const endValue = this.endValues[prop];
         this.object[prop] = startValue + (endValue - startValue) * easedProgress;
       });
   
+      // If the animation has reached the end of the duration
       if (elapsed >= this.duration) {
-        if (this.repeat > 0) {
-          this.repeat -= 1;
+        if (this.onComplete) {
+          this.onComplete(); // Execute the callback after each animation cycle
+        }
+  
+        if (this.repeat !== 0) {
+          // If repeat is infinite (-1) or a positive number
+          if (this.repeat > 0) {
+            this.repeat -= 1;
+          }
+  
+          // Yoyo effect: Swap the start and end values for the reverse movement
           if (this.yoyo) {
             [this.startValues, this.endValues] = [this.endValues, this.startValues];
           }
+  
+          // Reset the start time for the next loop
           this.startTime = performance.now();
         } else {
-          this.active = false; // Stop when animation is done
+          this.active = false; // Stop the animation when done
         }
       }
     }
@@ -90,7 +107,4 @@ export class AnimationManager {
       AnimationManager.instance.remove(this); // Unregister from manager
     }
   }
-  
-  // Initialize AnimationManager once
-  new AnimationManager();
   

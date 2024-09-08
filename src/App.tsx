@@ -1,6 +1,9 @@
 
 import Hero from './widgets/Navbar/Hero'
 import Navbar from './widgets/Navbar/Navbar'
+import {AnimationManager} from  './shared/lib/animator'
+
+export const animatorManager = new AnimationManager
 
 function App() {
 
