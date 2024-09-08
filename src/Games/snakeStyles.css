@@ -1,49 +1,20 @@
 #game-board {
-  background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,30,1) 100%);
+  background-color: #CCC;
   width: 100vmin;
   height: 100vmin;
   display: grid;
   grid-template-rows: repeat(21, 1fr);
   grid-template-columns: repeat(21, 1fr);
-  border: 2px solid #00FF00; /* Neon border effect */
-  box-shadow: 0 0 15px rgba(0,255,0,0.7); /* Neon glow effect */
 }
 
 .snake {
-  background-color: rgba(29, 202, 29, 0.8); /* Semi-transparent neon green */
-  border: .25px solid black;
-  box-shadow: 0 0 5px rgba(29, 202, 29, 0.8); /* Neon glow effect */
+  background-color: #00FF00; /* Bright neon green */
+  border: 1px solid #003300; /* Darker green border for contrast */
+  box-shadow: 0 0 10px rgba(0,255,0,0.9); /* Neon green glow effect */
 }
 
 .apple {
-  background-color: hsl(90, 100%, 50%);
-  border: .25px solid black;
-  box-shadow: 0 0 5px rgba(255, 0, 0, 0.8); /* Neon glow effect */
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 5px rgba(29, 202, 29, 0.8);
-  }
-  50% {
-    transform: scale(1.1);
-    box-shadow: 0 0 10px rgba(29, 202, 29, 0.8);
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 5px rgba(29, 202, 29, 0.8);
-  }
-}
-
-.snake {
-  background-color: rgba(29, 202, 29, 0.8);
-  border: .25px solid black;
-  animation: pulse 1s infinite;
-}
-
-.apple {
-  background-color: hsl(0, 100%, 50%);
-  border: .25px solid black;
-  animation: pulse 1s infinite;
+  background-color: #FF69B4; /* Neon pink */
+  border: 1px solid #FF1493; /* Darker pink border */
+  box-shadow: 0 0 10px rgba(255,105,180,0.9); /* Neon pink glow effect */
 }
