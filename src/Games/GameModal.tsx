@@ -16,7 +16,6 @@ const GameModal: React.FC<GameModalProps> = ({ isOpen, onClose }) => {
         link.href = 'snakeStyle.css'; // Path to your CSS file
         link.id = 'game-styles';
         document.head.appendChild(link);
-        console.log('Game styles appended');
       }
     };
 
@@ -24,39 +23,35 @@ const GameModal: React.FC<GameModalProps> = ({ isOpen, onClose }) => {
       const existingLink = document.getElementById('game-styles');
       if (existingLink) {
         document.head.removeChild(existingLink);
-        console.log('Game styles removed');
       }
     };
 
-    if (isOpen && gameContainerRef.current) {
-      const gameDiv = document.getElementById('game-board');
-      
-      if (gameDiv) {
-        loadGameStyles();
-
-        // Remove any previous game script if it exists
-        const existingScript = document.getElementById('game-script');
-        if (existingScript) {
-          existingScript.remove();
-        }
-
-        // Load the game script
-        const script = document.createElement('script');
-        script.src = '/snake.js'; // Ensure this path is correct
-        script.id = 'game-script';
-        script.async = true;
-        gameDiv.appendChild(script);
-        console.log('Game script appended');
+    const loadGameScript = () => {
+      const existingScript = document.getElementById('game-script');
+      if (existingScript) {
+        existingScript.remove(); // Remove existing script if it exists
       }
 
-      // Clean up styles and game when modal is closed
-      return () => {
-        if (gameDiv) {
-          gameDiv.innerHTML = ''; // Clear the game
-        }
-        removeGameStyles(); // Remove the injected CSS
-      };
+      const script = document.createElement('script');
+      script.src = '/snake.js'; // Ensure this path is correct
+      script.id = 'game-script';
+      script.async = true;
+      gameContainerRef.current?.appendChild(script); // Append to the game container
+    };
+
+    if (isOpen && gameContainerRef.current) {
+      loadGameStyles();
+      loadGameScript();
     }
+
+    // Clean up styles and game when modal is closed
+    return () => {
+      removeGameStyles(); // Remove the injected CSS
+      const existingScript = document.getElementById('game-script');
+      if (existingScript) {
+        existingScript.remove(); // Remove the script when modal is closed
+      }
+    };
   }, [isOpen]);
 
   if (!isOpen) return null;
