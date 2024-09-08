@@ -27,17 +27,17 @@ const Developer = ({ animationName = 'idle', ...props }) => {
   );
 
   useEffect(() => {
+    if (!group.current || !actions) return;
     const action = actions[animationName];
-    
+  
     if (action) {
       action.reset().fadeIn(0.5).play();
       return () => {
         action.fadeOut(0.5);
       };
     }
-
-    return undefined; // Return undefined if no action is found
-  }, [animationName, actions]);
+  }, [animationName, actions, group]);
+  
   
   return (
     <group ref={group} {...props} dispose={null}>

@@ -10,17 +10,21 @@ const GameModal: React.FC<GameModalProps> = ({ isOpen, onClose }) => {
 
   useEffect(() => {
     const loadGameStyles = () => {
-      const link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = 'snakeStyle.css'; // Path to your CSS file
-      link.id = 'game-styles'; // Give it an ID to identify later
-      document.head.appendChild(link);
+      if (!document.getElementById('game-styles')) {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'snakeStyle.css'; // Path to your CSS file
+        link.id = 'game-styles';
+        document.head.appendChild(link);
+        console.log('Game styles appended');
+      }
     };
 
     const removeGameStyles = () => {
-      const existingLink = document.getElementById('game-board');
+      const existingLink = document.getElementById('game-styles');
       if (existingLink) {
         document.head.removeChild(existingLink);
+        console.log('Game styles removed');
       }
     };
 
@@ -28,14 +32,21 @@ const GameModal: React.FC<GameModalProps> = ({ isOpen, onClose }) => {
       const gameDiv = document.getElementById('game-board');
       
       if (gameDiv) {
-        // Load the CSS
         loadGameStyles();
 
-        // Load and initialize the game
+        // Remove any previous game script if it exists
+        const existingScript = document.getElementById('game-script');
+        if (existingScript) {
+          existingScript.remove();
+        }
+
+        // Load the game script
         const script = document.createElement('script');
-        script.src = '/snake.js';
+        script.src = '/snake.js'; // Ensure this path is correct
+        script.id = 'game-script';
         script.async = true;
         gameDiv.appendChild(script);
+        console.log('Game script appended');
       }
 
       // Clean up styles and game when modal is closed
@@ -52,8 +63,9 @@ const GameModal: React.FC<GameModalProps> = ({ isOpen, onClose }) => {
 
   return (
     <div
+    id="game-board"
+    ref={gameContainerRef}
       className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
-      onClick={onClose}
     >
       <div
         className="bg-white w-[70vw] h-[70vh] p-6 relative rounded-lg shadow-lg"
@@ -67,10 +79,11 @@ const GameModal: React.FC<GameModalProps> = ({ isOpen, onClose }) => {
         </button>
 
         {/* Game container where the game will be loaded */}
-        <div id="game-board" ref={gameContainerRef}></div>
+        <div> </div>
       </div>
     </div>
   );
 };
 
 export default GameModal;
+
