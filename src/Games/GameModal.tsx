@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-//document.getElementsByTagName('script');
+
 interface GameModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -7,6 +7,7 @@ interface GameModalProps {
 
 const GameModal: React.FC<GameModalProps> = ({ isOpen, onClose }) => {
   const gameContainerRef = useRef<HTMLDivElement>(null);
+  const scriptRef = useRef<HTMLScriptElement | null>(null);
 
   useEffect(() => {
     const loadGameStyles = () => {
@@ -25,51 +26,39 @@ const GameModal: React.FC<GameModalProps> = ({ isOpen, onClose }) => {
         document.head.removeChild(existingLink);
       }
     };
-    const removeGameScript = () => {
-      const existingScript = document.querySelector("snake-#game-script")
-//       const scripts = document.getElementsByTagName('script');
 
-// const script = Array.from(scripts).filter(s => s.id === 'game-script')[0];
-// console.log(script)
-// script.remove();
-      console.log("existingScript",existingScript);
-      if (existingScript) {
-        existingScript.remove();
-      }
-    };
-    if (isOpen && gameContainerRef.current) {
-      const gameDiv = document.getElementById('game-board');
-      
-      if (gameDiv) {
-        loadGameStyles();
-
+    const loadGameScript = () => {
+      // console.log("curr",scriptRef.current)
+      if (gameContainerRef.current) {
+        console.log("curr",scriptRef.current)
         // Remove any previous game script if it exists
-        // const existingScript = document.getElementById('game-script');
-        // if (existingScript) {
-        //   existingScript.remove();
-        // }
+        if (scriptRef.current) {
+          gameContainerRef.current.removeChild(scriptRef.current);
+          console.log('Previous game script removed');
+        }
 
         // Load the game script
         const script = document.createElement('script');
         script.src = '/snake.js'; // Ensure this path is correct
-        script.id = 'snake-game-script';
+        script.id = 'game-script';
         script.async = true;
-        gameDiv.appendChild(script);
-        console.log("script",script);
+        gameContainerRef.current.appendChild(script);
+        scriptRef.current = script; // Store the script reference
       }
+    };
 
-      // Clean up styles and game when modal is closed
-      return () => {
-        if (gameDiv) {
-          //gameDiv.innerHTML = ''; // Clear the game
-          console.log("gamediv",gameDiv)
-        }
-        const existingScript = document.getElementById('game-script');
-        console.log("2existingScript",existingScript); 
-        removeGameScript()
-        removeGameStyles(); // Remove the injected CSS
-      };
+    if (isOpen) {
+      loadGameStyles();
+      loadGameScript();
     }
+
+    // Clean up styles and game when modal is closed
+    return () => {
+      if (gameContainerRef.current) {
+        gameContainerRef.current.innerHTML = ''; // Clear the game
+      }
+      removeGameStyles(); // Remove the injected CSS
+    };
   }, [isOpen]);
 
   if (!isOpen) return null;
@@ -98,4 +87,3 @@ const GameModal: React.FC<GameModalProps> = ({ isOpen, onClose }) => {
 };
 
 export default GameModal;
-
