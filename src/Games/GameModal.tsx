@@ -25,33 +25,46 @@ const GameModal: React.FC<GameModalProps> = ({ isOpen, onClose }) => {
         document.head.removeChild(existingLink);
       }
     };
-
-    const loadGameScript = () => {
-      const existingScript = document.getElementById('game-script');
+    const removeGameScript = () => {
+      const existingScript = document.querySelector("#game-script")
+      console.log("existingScript",existingScript);
       if (existingScript) {
-        existingScript.remove(); // Remove existing script if it exists
+        existingScript.remove();
       }
-
-      const script = document.createElement('script');
-      script.src = '/snake.js'; // Ensure this path is correct
-      script.id = 'game-script';
-      script.async = true;
-      gameContainerRef.current?.appendChild(script); // Append to the game container
     };
-
     if (isOpen && gameContainerRef.current) {
-      loadGameStyles();
-      loadGameScript();
-    }
+      const gameDiv = document.getElementById('game-board');
+      
+      if (gameDiv) {
+        loadGameStyles();
 
-    // Clean up styles and game when modal is closed
-    return () => {
-      removeGameStyles(); // Remove the injected CSS
-      const existingScript = document.getElementById('game-script');
-      if (existingScript) {
-        existingScript.remove(); // Remove the script when modal is closed
+        // Remove any previous game script if it exists
+        // const existingScript = document.getElementById('game-script');
+        // if (existingScript) {
+        //   existingScript.remove();
+        // }
+
+        // Load the game script
+        const script = document.createElement('script');
+        script.src = '/snake.js'; // Ensure this path is correct
+        script.id = 'game-script';
+        script.async = true;
+        gameDiv.appendChild(script);
+        console.log("script",script);
       }
-    };
+
+      // Clean up styles and game when modal is closed
+      return () => {
+        if (gameDiv) {
+          //gameDiv.innerHTML = ''; // Clear the game
+          console.log("gamediv",gameDiv)
+        }
+        const existingScript = document.getElementById('game-script');
+        console.log("2existingScript",existingScript); 
+        removeGameScript()
+        removeGameStyles(); // Remove the injected CSS
+      };
+    }
   }, [isOpen]);
 
   if (!isOpen) return null;
