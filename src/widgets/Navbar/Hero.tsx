@@ -2,7 +2,7 @@ import { Leva } from 'leva';
 import { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { useMediaQuery } from 'react-responsive';
-import { PerspectiveCamera } from '@react-three/drei';
+import { PerspectiveCamera, Stars } from '@react-three/drei';
 import CanvasLoader from '../../shared/Skeletons/Canvas';
 import { Desk } from '../../features/Desk';
 import useCalculateSizes from '../../shared/consts/Sizes';
@@ -12,7 +12,6 @@ import Cube from '../../features/Cube';
 import ReactLogo from '../../features/React';
 
 const Hero = () => {
-  
   const isSmall = useMediaQuery({ maxWidth: 440 });
   const isMobile = useMediaQuery({ maxWidth: 768 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
@@ -31,9 +30,18 @@ const Hero = () => {
       <div className="w-full h-full absolute inset-0">
         <Canvas className="w-full h-full">
           <Suspense fallback={<CanvasLoader />}>
-            {/* To hide controller */}
             <Leva hidden />
             <PerspectiveCamera makeDefault position={[0, 0, 30]} />
+            
+            {/* Add Stars component for the starry night background */}
+            <Stars
+              radius={100}   // Radius of the star field
+              depth={50}     // Depth of star field
+              count={5000}   // Number of stars
+              factor={8}     // Size factor for the stars
+              saturation={0} // Star color saturation
+              fade={true}    // Whether stars should fade when moving away
+            />
 
             <HeroCamera isMobile={isMobile}>
               <Desk scale={sizes.deskScale} position={sizes.deskPosition} rotation={[0.1, -Math.PI, 0]} />
@@ -42,11 +50,10 @@ const Hero = () => {
             <group>
               <Target position={sizes.targetPosition} />
               <ReactLogo position={sizes.reactLogoPosition} />
-              {/* <Rings position={sizes.ringPosition} />*/}
               <Cube position={sizes.cubePosition} /> 
             </group>
 
-            <ambientLight intensity={0.49} color={"orange"}/>
+            <ambientLight intensity={0.49} color={"orange"} />
             <directionalLight position={[25, 3, 9]} intensity={6} />
           </Suspense>
         </Canvas>
@@ -62,5 +69,4 @@ const Hero = () => {
 };
 
 export default Hero;
-
 
