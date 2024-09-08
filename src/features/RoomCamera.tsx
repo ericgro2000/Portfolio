@@ -8,7 +8,7 @@ interface HeroCameraProps {
   children: ReactNode;
 }
 
-const HeroCamera = ({ isMobile, children }: HeroCameraProps) => {
+const RoomCamera = ({ isMobile, children }: HeroCameraProps) => {
   const group = useRef<THREE.Group>(null);
 
   useFrame((state, delta) => {
@@ -27,4 +27,4 @@ const HeroCamera = ({ isMobile, children }: HeroCameraProps) => {
   return <group ref={group}>{children}</group>;
 };
 
-export default HeroCamera;
+export default RoomCamera;

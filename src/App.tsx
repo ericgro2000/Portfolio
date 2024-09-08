@@ -1,5 +1,5 @@
 
-import Hero from './widgets/Navbar/Hero'
+import Hero from './widgets/Navbar/Room'
 import Navbar from './widgets/Navbar/Navbar'
 import {AnimationManager} from  './shared/lib/animator'
 import About from './features/About'

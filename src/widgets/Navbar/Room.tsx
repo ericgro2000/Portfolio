@@ -6,7 +6,7 @@ import { PerspectiveCamera, Stars } from '@react-three/drei';
 import CanvasLoader from '../../shared/Skeletons/Canvas';
 import { Desk } from '../../features/Desk';
 import useCalculateSizes from '../../shared/consts/Sizes';
-import HeroCamera from '../../features/HeroCamera';
+import HeroCamera from '../../features/RoomCamera';
 import Target from '../../features/Target';
 import Cube from '../../features/Cube';
 import ReactLogo from '../../features/React';

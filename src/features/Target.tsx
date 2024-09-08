@@ -14,7 +14,7 @@ const Target = (props:any) => {
     const animation = anime({
       targets: targetRef.current.position,
       y: targetRef.current.position.y + 0.5,
-      duration: 1500, // Duration in milliseconds
+      duration: 1500, 
       easing: 'linear',
       loop: true,
       direction: 'alternate', // This will make it yoyo
@@ -22,9 +22,9 @@ const Target = (props:any) => {
 
     return () => {
       if (targetRef.current) {
-        targetRef.current.remove(); // Remove the element from the DOM
+        targetRef.current.remove(); 
       }
-      anime.remove(targetRef.current.position); // Stop any ongoing animations
+      anime.remove(targetRef.current.position); 
     };
   }, []);
 
