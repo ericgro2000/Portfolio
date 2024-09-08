@@ -4,6 +4,13 @@
 @tailwind components;
 @tailwind utilities;
 
+.no-scroll {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+
 * {
   scroll-behavior: smooth;
 }

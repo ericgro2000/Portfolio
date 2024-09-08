@@ -10,12 +10,17 @@ const GameModal: React.FC<GameModalProps> = ({ isOpen, onClose }) => {
 
   useEffect(() => {
     if (isOpen) {
+      // Disable scrolling
+      document.body.classList.add('no-scroll');
       // Create and load the game iframe
       if (iframeRef.current) {
         iframeRef.current.src = '/game.html'; // Ensure this path points to an HTML file that includes the game script
         iframeRef.current.style.width = '100%';
         iframeRef.current.style.height = '100%';
       }
+    } else {
+      // Enable scrolling
+      document.body.classList.remove('no-scroll');
     }
 
     // Clean up when modal is closed
@@ -23,6 +28,7 @@ const GameModal: React.FC<GameModalProps> = ({ isOpen, onClose }) => {
       if (iframeRef.current) {
         iframeRef.current.src = ''; // Remove the src to unload the iframe content
       }
+      document.body.classList.remove('no-scroll'); // Ensure scrolling is re-enabled
     };
   }, [isOpen]);
 
@@ -56,4 +62,3 @@ const GameModal: React.FC<GameModalProps> = ({ isOpen, onClose }) => {
 };
 
 export default GameModal;
-
