@@ -1,5 +1,5 @@
 
-import Hero from './widgets/Navbar/Room'
+import Room from './widgets/Navbar/Room'
 import Navbar from './widgets/Navbar/Navbar'
 import {AnimationManager} from  './shared/lib/animator'
 import About from './features/About'
@@ -10,9 +10,9 @@ import Projects from './widgets/Navbar/Projects'
 function App() {
 
   return (
-    <main className="max-w-7xl mx-auto relative">
+    <main className="max-w-7.5xl mx-auto relative">
     <Navbar />
-    <Hero />
+    <Room />
     <About />
     <Projects />
   </main>

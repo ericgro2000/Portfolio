@@ -3,6 +3,9 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      maxWidth: {
+        '7.5xl': '90rem', 
+      },
       fontFamily: {
         generalsans: ['General Sans', 'sans-serif'],
       },
