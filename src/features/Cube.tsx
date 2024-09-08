@@ -4,8 +4,8 @@ import anime from 'animejs/lib/anime.es.js';
 import { Mesh } from 'three';
 
 type CubeProps = {
-  position?: [number, number, number];
-} & React.HTMLProps<HTMLDivElement>;
+    position?: [number, number, number]; // Make position optional if not always required
+  } & React.ComponentPropsWithoutRef<'group'>;
 
 const Cube: React.FC<CubeProps> = ({ position = [0, 0, 0], ...props }) => {
   const { nodes } = useGLTF('models/cube.glb');
