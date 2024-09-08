@@ -9,9 +9,10 @@ interface NavLink {
 
 interface NavItemsProps {
   onClick?: () => void;
+  onPlayGameClick: () => void; // New prop for the Play Game button
 }
 
-const NavItems: React.FC<NavItemsProps> = ({ onClick = () => {} }) => (
+const NavItems: React.FC<NavItemsProps> = ({ onClick = () => {}, onPlayGameClick }) => (
   <ul className="nav-ul">
     {navLinks.map((item: NavLink) => (
       <li key={item.id} className="nav-li">
@@ -20,10 +21,23 @@ const NavItems: React.FC<NavItemsProps> = ({ onClick = () => {} }) => (
         </a>
       </li>
     ))}
+    {/* Add Play Game Button */}
+    <li className="nav-li">
+      <button
+        onClick={onPlayGameClick}
+        className="nav-li_a text-white bg-blue-500 px-4 py-2 rounded hover:bg-blue-700 transition"
+      >
+        Play Game
+      </button>
+    </li>
   </ul>
 );
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  openGameModal: () => void; // Prop to open the game modal
+}
+
+const Navbar: React.FC<NavbarProps> = ({ openGameModal }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -46,14 +60,14 @@ const Navbar: React.FC = () => {
           </button>
 
           <nav className="sm:flex hidden">
-            <NavItems />
+            <NavItems onPlayGameClick={openGameModal} />
           </nav>
         </div>
       </div>
 
       <div className={`nav-sidebar ${isOpen ? 'max-h-screen' : 'max-h-0'}`}>
         <nav className="p-5">
-          <NavItems onClick={closeMenu} />
+          <NavItems onClick={closeMenu} onPlayGameClick={openGameModal} />
         </nav>
       </div>
     </header>

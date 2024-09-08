@@ -5,18 +5,26 @@ import Navbar from './widgets/Navbar/Navbar'
 import About from './features/About'
 import Projects from './widgets/Navbar/Projects'
 import WorkExperience from './widgets/Navbar/WorkExpirience'
+import GameModal from './Games/GameModal'
+import { useState } from 'react'
 
 // export const animatorManager = new AnimationManager
 
 function App() {
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
     <main className="max-w-7.5xl mx-auto relative">
-    <Navbar />
+    <Navbar openGameModal={openModal} />
     <Room />
     <About />
     <Projects />
     <WorkExperience />
+    <GameModal isOpen={isModalOpen} onClose={closeModal} />
   </main>
   )
 }
