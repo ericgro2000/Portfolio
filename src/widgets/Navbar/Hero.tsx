@@ -44,7 +44,7 @@ const Hero = () => {
             </group>
 
             <ambientLight intensity={0.49} color={"orange"}/>
-            <directionalLight position={[10, 0, 9]} intensity={6} />
+            <directionalLight position={[10, 3, 9]} intensity={6} />
           </Suspense>
         </Canvas>
       </div>

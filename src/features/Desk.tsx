@@ -21,7 +21,7 @@ export function Desk(props: any) {
         receiveShadow
         geometry={nodes.Plane_Material_0.geometry}
         material={materials.Material}
-        rotation={[-1.7, 0, 2.3]}
+        rotation={[-1.5, 0, 2.3]}
         scale={60}
       />
     </group>
