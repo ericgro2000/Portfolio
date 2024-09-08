@@ -6,58 +6,23 @@ interface GameModalProps {
 }
 
 const GameModal: React.FC<GameModalProps> = ({ isOpen, onClose }) => {
-  const gameContainerRef = useRef<HTMLDivElement>(null);
-  const scriptRef = useRef<HTMLScriptElement | null>(null);
+  const iframeRef = useRef<HTMLIFrameElement | null>(null);
 
   useEffect(() => {
-    const loadGameStyles = () => {
-      if (!document.getElementById('game-styles')) {
-        const link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.href = 'snakeStyle.css'; // Path to your CSS file
-        link.id = 'game-styles';
-        document.head.appendChild(link);
-      }
-    };
-
-    const removeGameStyles = () => {
-      const existingLink = document.getElementById('game-styles');
-      if (existingLink) {
-        document.head.removeChild(existingLink);
-      }
-    };
-
-    const loadGameScript = () => {
-      // console.log("curr",scriptRef.current)
-      if (gameContainerRef.current) {
-        console.log("curr",scriptRef.current)
-        // Remove any previous game script if it exists
-        if (scriptRef.current) {
-          gameContainerRef.current.removeChild(scriptRef.current);
-          console.log('Previous game script removed');
-        }
-
-        // Load the game script
-        const script = document.createElement('script');
-        script.src = '/snake.js'; // Ensure this path is correct
-        script.id = 'game-script';
-        script.async = true;
-        gameContainerRef.current.appendChild(script);
-        scriptRef.current = script; // Store the script reference
-      }
-    };
-
     if (isOpen) {
-      loadGameStyles();
-      loadGameScript();
+      // Create and load the game iframe
+      if (iframeRef.current) {
+        iframeRef.current.src = '/game.html'; // Ensure this path points to an HTML file that includes the game script
+        iframeRef.current.style.width = '100%';
+        iframeRef.current.style.height = '100%';
+      }
     }
 
-    // Clean up styles and game when modal is closed
+    // Clean up when modal is closed
     return () => {
-      if (gameContainerRef.current) {
-        gameContainerRef.current.innerHTML = ''; // Clear the game
+      if (iframeRef.current) {
+        iframeRef.current.src = ''; // Remove the src to unload the iframe content
       }
-      removeGameStyles(); // Remove the injected CSS
     };
   }, [isOpen]);
 
@@ -79,11 +44,16 @@ const GameModal: React.FC<GameModalProps> = ({ isOpen, onClose }) => {
           X
         </button>
 
-        {/* Game container where the game will be loaded */}
-        <div id="game-board" ref={gameContainerRef} style={{ width: '100%', height: '100%' }}></div>
+        {/* Game iframe */}
+        <iframe
+          ref={iframeRef}
+          title="Game"
+          style={{ width: '100%', height: '100%', border: 'none' }}
+        ></iframe>
       </div>
     </div>
   );
 };
 
 export default GameModal;
+
