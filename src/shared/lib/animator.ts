@@ -61,60 +61,27 @@ export class AnimationManager {
     }
   
     public to(properties: Record<string, number>, options: AnimationOptions): void {
-      this.startValues = {};
-      this.endValues = properties;
-      this.startTime = performance.now();
-      this.duration = (options.duration ?? 1) * 1000;
-      this.easing = options.ease ?? ((t) => t);
-      this.repeat = options.repeat ?? 0;
-      this.yoyo = options.yoyo ?? false;
-      this.active = true;
-      this.onComplete = options.onComplete ?? null;
+      // this.startValues = {};
+      // this.endValues = properties;
+      // this.startTime = performance.now();
+      // this.duration = (options.duration ?? 1) * 1000;
+      // this.easing = options.ease ?? ((t) => t);
+      // this.repeat = options.repeat ?? 0;
+      // this.yoyo = options.yoyo ?? false;
+      // this.active = true;
+      // this.onComplete = options.onComplete ?? null;
   
       // Capture starting values
       Object.keys(properties).forEach((prop) => {
-        this.startValues[prop] = this.object[prop];
+        //this.startValues[prop] = this.object[prop];
       });
     }
   
     public update(time: number): void {
-      if (!this.active) return;
-  
-      const elapsed = time - this.startTime;
-      const progress = Math.min(elapsed / this.duration, 1);
-      const easedProgress = this.easing(progress);
-  
-      // Interpolate between start and end values
-      Object.keys(this.endValues).forEach((prop) => {
-        const startValue = this.startValues[prop];
-        const endValue = this.endValues[prop];
-        this.object[prop] = startValue + (endValue - startValue) * easedProgress;
-      });
+      
   
       // If the animation has reached the end of the duration
-      if (elapsed >= this.duration) {
-        if (this.onComplete) {
-          this.onComplete();
-        }
-        console.log(this.repeat)
-        if (this.repeat === -1 || this.repeat > 0) {
-            console.log(this.repeat)
-          // Handle repeat logic
-          if (this.repeat > 0) {
-            this.repeat -= 1;
-          }
-  
-          // Yoyo effect: Swap the start and end values for the reverse movement
-          if (this.yoyo) {
-            [this.startValues, this.endValues] = [this.endValues, this.startValues];
-          }
-  
-          // Reset the start time for the next loop
-          this.startTime = performance.now();
-        } else {
-          this.active = false; // Stop the animation when done
-        }
-      }
+      
     }
   
     public stop(): void {

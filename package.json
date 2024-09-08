@@ -12,6 +12,7 @@
   "dependencies": {
     "@react-three/drei": "^9.112.0",
     "@react-three/fiber": "^8.17.6",
+    "animejs": "^3.2.2",
     "leva": "^0.9.35",
     "maath": "^0.10.8",
     "react": "^18.3.1",
@@ -22,6 +23,7 @@
   "devDependencies": {
     "@eslint/js": "^9.9.0",
     "@react-three/eslint-plugin": "^0.1.1",
+    "@types/animejs": "^3.1.12",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@types/three": "^0.168.0",

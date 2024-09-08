@@ -1,28 +1,30 @@
 import { useGLTF } from '@react-three/drei';
-import { useEffect, useRef } from 'react';
-import { SimpleAnimator } from '../shared/consts/simpleAnimator';
-// import { useGSAP } from '@gsap/react';
-// import gsap from 'gsap';
+import { useRef, useEffect } from 'react';
+import anime from 'animejs';
+import { Mesh } from 'three';
 
-const Target = (props) => {
-  const targetRef = useRef();
+// Define the Target component
+const Target = (props:any) => {
+  const targetRef = useRef<Mesh>(null!);
   const { scene } = useGLTF(
     'https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/target-stand/model.gltf',
   );
 
   useEffect(() => {
-    const animator = new SimpleAnimator(targetRef.current.position);
-
-    // Animate position.y for the current target
-    animator.to(
-      { y: targetRef.current.position.y + 0.5 },
-      { duration: 1.5, repeat: -1, yoyo: true, ease: (t) => t,onComplete: () => {
-        console.log('Animation cycle complete!');
-      }  },
-    );
+    const animation = anime({
+      targets: targetRef.current.position,
+      y: targetRef.current.position.y + 0.5,
+      duration: 1500, // Duration in milliseconds
+      easing: 'linear',
+      loop: true,
+      direction: 'alternate', // This will make it yoyo
+    });
 
     return () => {
-      animator.stop(); // Clean up animation on unmount
+      if (targetRef.current) {
+        targetRef.current.remove(); // Remove the element from the DOM
+      }
+      anime.remove(targetRef.current.position); // Stop any ongoing animations
     };
   }, []);
 
