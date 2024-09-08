@@ -22,7 +22,7 @@ export function Desk(props: any) {
         geometry={nodes.Plane_Material_0.geometry}
         material={materials.Material}
         rotation={[-1.5, 0, 2.3]}
-        scale={30}
+        //scale={30}
       />
     </group>
   )
