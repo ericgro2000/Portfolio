@@ -6,6 +6,7 @@ import { PerspectiveCamera } from '@react-three/drei';
 import CanvasLoader from '../../shared/Skeletons/Canvas';
 import { Desk } from '../../features/Desk';
 import useCalculateSizes from '../../shared/consts/Sizes';
+import HeroCamera from '../../features/HeroCamera';
 
 const Hero = () => {
   
@@ -31,9 +32,9 @@ const Hero = () => {
             <Leva hidden />
             <PerspectiveCamera makeDefault position={[0, 0, 30]} />
 
-            {/* <HeroCamera isMobile={isMobile}> */}
+            <HeroCamera isMobile={isMobile}>
               <Desk scale={sizes.deskScale} position={sizes.deskPosition} rotation={[0.1, -Math.PI, 0]} />
-            {/* </HeroCamera> */}
+            </HeroCamera>
 
             <group>
               {/* <Target position={sizes.targetPosition} />
@@ -42,8 +43,8 @@ const Hero = () => {
               <Cube position={sizes.cubePosition} /> */}
             </group>
 
-            <ambientLight intensity={1} />
-            <directionalLight position={[10, 10, 10]} intensity={1} />
+            <ambientLight intensity={0.49} color={"orange"}/>
+            <directionalLight position={[10, 0, 9]} intensity={6} />
           </Suspense>
         </Canvas>
       </div>
