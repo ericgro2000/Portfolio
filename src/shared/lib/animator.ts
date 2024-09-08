@@ -80,11 +80,11 @@ export class AnimationManager {
       // If the animation has reached the end of the duration
       if (elapsed >= this.duration) {
         if (this.onComplete) {
-          this.onComplete(); // Execute the callback after each animation cycle
+          this.onComplete();
         }
   
-        if (this.repeat !== 0) {
-          // If repeat is infinite (-1) or a positive number
+        if (this.repeat === -1 || this.repeat > 0) {
+          // Handle repeat logic
           if (this.repeat > 0) {
             this.repeat -= 1;
           }

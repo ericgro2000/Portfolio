@@ -16,7 +16,7 @@ const Target = (props) => {
     // Animate position.y for the current target
     animator.to(
       { y: targetRef.current.position.y + 0.5 },
-      { duration: 1.5, repeat: -1, yoyo: true, ease: (t) => t,onComplete: () => {
+      { duration: 1.5, repeat: 11, yoyo: true, ease: (t) => t,onComplete: () => {
         console.log('Animation cycle complete!');
       }  },
     );
