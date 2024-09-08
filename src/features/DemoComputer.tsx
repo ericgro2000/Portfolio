@@ -14,29 +14,23 @@ const DemoComputer = (props: DemoComputerProps) => {
   const { nodes, materials, animations } = useGLTF('/models/computer.glb') as any;  // Type `any` to avoid Object3D errors
   const { actions } = useAnimations(animations, group);
 
-  // Handle the video texture
   const txt = useVideoTexture(props.texture ? props.texture : '/textures/project/project1.mp4');
 
-  // Flip the video texture's Y-axis
   useEffect(() => {
     if (txt) {
       txt.flipY = false;
     }
   }, [txt]);
 
-  // Handle the animation based on direction
   useEffect(() => {
     if (group.current) {
-      console.log(props);
 
-      // Set initial rotation based on direction
       if (props.direction === 'previous') {
         group.current.rotation.y = -2;
       } else {
         group.current.rotation.y = 2;
       }
 
-      // Animate rotation to 0 on the y-axis
       anime({
         targets: group.current.rotation,  // target the rotation object
         y: 0,  // set the desired end value for 'y'

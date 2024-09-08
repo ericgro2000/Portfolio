@@ -35,6 +35,9 @@ dependencies:
   three:
     specifier: ^0.168.0
     version: 0.168.0
+  three-stdlib:
+    specifier: ^2.32.2
+    version: 2.32.2(three@0.168.0)
 
 devDependencies:
   '@eslint/js':

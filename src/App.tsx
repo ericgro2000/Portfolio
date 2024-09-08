@@ -1,9 +1,10 @@
 
 import Room from './widgets/Navbar/Room'
 import Navbar from './widgets/Navbar/Navbar'
-import {AnimationManager} from  './shared/lib/animator'
+// import {AnimationManager} from  './shared/lib/animator'
 import About from './features/About'
 import Projects from './widgets/Navbar/Projects'
+import WorkExperience from './widgets/Navbar/WorkExpirience'
 
 // export const animatorManager = new AnimationManager
 
@@ -15,6 +16,7 @@ function App() {
     <Room />
     <About />
     <Projects />
+    <WorkExperience />
   </main>
   )
 }
