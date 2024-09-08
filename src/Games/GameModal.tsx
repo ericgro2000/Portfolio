@@ -63,9 +63,8 @@ const GameModal: React.FC<GameModalProps> = ({ isOpen, onClose }) => {
 
   return (
     <div
-    id="game-board"
-    ref={gameContainerRef}
       className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
+      onClick={onClose}
     >
       <div
         className="bg-white w-[70vw] h-[70vh] p-6 relative rounded-lg shadow-lg"
@@ -79,7 +78,7 @@ const GameModal: React.FC<GameModalProps> = ({ isOpen, onClose }) => {
         </button>
 
         {/* Game container where the game will be loaded */}
-        <div> </div>
+        <div id="game-board" ref={gameContainerRef} style={{ width: '100%', height: '100%' }}></div>
       </div>
     </div>
   );
