@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-
+//document.getElementsByTagName('script');
 interface GameModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -26,7 +26,12 @@ const GameModal: React.FC<GameModalProps> = ({ isOpen, onClose }) => {
       }
     };
     const removeGameScript = () => {
-      const existingScript = document.querySelector("#game-script")
+      const existingScript = document.querySelector("snake-#game-script")
+//       const scripts = document.getElementsByTagName('script');
+
+// const script = Array.from(scripts).filter(s => s.id === 'game-script')[0];
+// console.log(script)
+// script.remove();
       console.log("existingScript",existingScript);
       if (existingScript) {
         existingScript.remove();
@@ -47,7 +52,7 @@ const GameModal: React.FC<GameModalProps> = ({ isOpen, onClose }) => {
         // Load the game script
         const script = document.createElement('script');
         script.src = '/snake.js'; // Ensure this path is correct
-        script.id = 'game-script';
+        script.id = 'snake-game-script';
         script.async = true;
         gameDiv.appendChild(script);
         console.log("script",script);
