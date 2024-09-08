@@ -78,14 +78,14 @@ const Projects = () => {
           </div>
 
           <div className="flex justify-between items-center mt-7">
-            <button className="arrow-btn" onClick={() => ()=>{
+            <button className="arrow-btn" onClick={ ()=>{
                 setDirection('previous')
                 handleNavigation(direction)
             }}>
               <img src="/assets/left-arrow.png" alt="left arrow" />
             </button>
 
-            <button className="arrow-btn" onClick={() => ()=>{
+            <button className="arrow-btn" onClick={ ()=>{
                 setDirection('next')
                 handleNavigation(direction)
             }}>
