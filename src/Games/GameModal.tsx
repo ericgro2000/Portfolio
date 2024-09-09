@@ -35,30 +35,30 @@ const GameModal: React.FC<GameModalProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div
-      className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
-      onClick={onClose}
-    >
       <div
-        className="bg-white w-[70vw] h-[70vh] p-6 relative rounded-lg shadow-lg"
-        onClick={(e) => e.stopPropagation()}
+        className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 no-scroll"
+        onClick={onClose}
       >
-        <button
-          className="absolute top-2 right-2 text-gray-500 hover:text-gray-800"
-          onClick={onClose}
+        <div
+          className="relative w-[55vw] h-[55vh] bg-white rounded-lg shadow-lg no-scroll"
+          onClick={(e) => e.stopPropagation()} // Prevent closing the modal when clicking inside it
         >
-          X
-        </button>
-
-        {/* Game iframe */}
-        <iframe
-          ref={iframeRef}
-          title="Game"
-          style={{ width: '100%', height: '100%', border: 'none' }}
-        ></iframe>
+          <button
+            className="absolute top-2 right-2 text-gray-500 hover:text-gray-800"
+            onClick={onClose}
+          >
+            X
+          </button>
+  
+          {/* Game iframe */}
+          <iframe
+            ref={iframeRef}
+            title="Game"
+            style={{ width: '100%', height: '100%', border: 'none' }}
+          ></iframe>
+        </div>
       </div>
-    </div>
-  );
+    );
 };
 
 export default GameModal;
