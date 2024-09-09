@@ -1,0 +1,77 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  flex-direction: column;
+  color: white;
+  height: 100vh; /* Ensure body takes full viewport height */
+  width: 100vw;  /* Ensure body takes full viewport width */
+  overflow: hidden; /* Prevent scrolling */
+}
+
+.game-container {
+  height: 75vh; 
+  width: 75vw; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.title {
+  margin: 10px;
+  font-size: 2rem;
+}
+
+.subtext {
+  color: #ccc;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.board {
+  display: inline-grid;
+  padding: 10px;
+  grid-template-columns: repeat(var(--size), 1fr); /* Make cells responsive */
+  grid-template-rows: repeat(var(--size), 1fr);
+  gap: 1px;
+  background-color: #777;
+  width: 90%; /* Relative to the container */
+  height: 90%; /* Relative to the container */
+}
+
+.board > * {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border: 2px solid #bbb;
+  user-select: none;
+}
+
+.board > [data-status="hidden"] {
+  background-color: #bbb;
+  cursor: pointer;
+}
+
+.board > [data-status="mine"] {
+  background-color: red;
+}
+
+.board > [data-status="number"] {
+  background-color: none;
+}
+
+.board > [data-status="marked"] {
+  background-color: yellow;
+}

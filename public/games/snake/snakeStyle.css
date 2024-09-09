@@ -1,4 +1,4 @@
-.body {
+body {
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -9,7 +9,7 @@
 }
 
 #game-board {
-  background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,30,1) 100%);
+  background: radial-gradient(circle, rgb(63, 62, 62) 0%, rgba(0,0,30,1) 100%);
   width: 95vmin;
   height: 95vmin;
   display: grid;

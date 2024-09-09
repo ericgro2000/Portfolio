@@ -12,7 +12,7 @@ const GameModal: React.FC<GameModalProps> = ({ isOpen, onClose }) => {
     if (isOpen) {
       document.body.classList.add('no-scroll');
       if (iframeRef.current) {
-        iframeRef.current.src = '/game.html';
+        iframeRef.current.src = '/games/mineSweeper/game.html';
       }
     } else {
       document.body.classList.remove('no-scroll');
@@ -38,7 +38,7 @@ const GameModal: React.FC<GameModalProps> = ({ isOpen, onClose }) => {
         onClick={(e) => e.stopPropagation()}
       >
         <button
-          className="absolute text-gray-500 hover:text-gray-800"
+          className="absolute right-0 text-gray-500 hover:text-gray-800"
           onClick={onClose}
         >
           X
@@ -48,7 +48,7 @@ const GameModal: React.FC<GameModalProps> = ({ isOpen, onClose }) => {
         <iframe
           ref={iframeRef}
           title="Game"
-          className="w-[90vw] h-[90vw] max-w-[31rem] max-h-[31rem] sm:w-[40rem] sm:h-[40rem] lg:w-[50rem] lg:h-[50rem] border-none block mx-auto"
+          className="w-[90vw] h-[90vw] max-w-[41rem] max-h-[41rem] sm:w-[40rem] sm:h-[40rem] lg:w-[50rem] lg:h-[50rem] border-none block mx-auto"
         ></iframe>
       </div>
     </div>
