@@ -38,11 +38,11 @@ const GameModal: React.FC<GameModalProps> = ({ isOpen, onClose }) => {
         onClick={(e) => e.stopPropagation()}
       >
         <button
-          className="absolute right-0 text-gray-500 hover:text-gray-800"
-          onClick={onClose}
-        >
-          X
-        </button>
+  className="absolute right-0 text-gray-500 hover:text-gray-800"
+  onClick={onClose}
+>
+  <img src="assets/close.svg" alt="close" className="w-6 h-6" />
+</button>
 
         {/* Game iframe */}
         <iframe
