@@ -1,16 +1,15 @@
 import { useRef, useEffect } from 'react';
 import { useGLTF, useAnimations, useVideoTexture } from '@react-three/drei';
-import * as THREE from 'three';  // Import THREE for type definitions
 import anime from 'animejs';
+import { Group } from 'three';
 
-// Define the type of the props
 interface DemoComputerProps {
   texture?: string;
   direction?: string;
 }
 
 const DemoComputer = (props: DemoComputerProps) => {
-  const group = useRef<THREE.Group>(null);  // Explicitly type the ref as a THREE.Group
+  const group = useRef<Group>(null);  // Explicitly type the ref as a THREE.Group
   const { nodes, materials, animations } = useGLTF('/models/computer.glb') as any;  // Type `any` to avoid Object3D errors
   const { actions } = useAnimations(animations, group);
 

@@ -4,6 +4,7 @@ import anime from 'animejs';
 import { Mesh } from 'three';
 
 // Define the Target component
+// TODO: make all floating components reusable through target
 const Target = (props:any) => {
   const targetRef = useRef<Mesh>(null!);
   const { scene } = useGLTF(

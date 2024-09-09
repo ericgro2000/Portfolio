@@ -5,7 +5,7 @@ import { SkeletonUtils } from 'three-stdlib';
 import { Group, Object3D, SkinnedMesh } from 'three';
 
 const Developer = ({ animationName = 'idle', ...props }) => {
-  const group = useRef<Group | null>(null); // Initialize the ref with null
+  const group = useRef<Group | null>(null); 
 
   const { scene } = useGLTF('/models/animations/developer.glb');
   const clone = React.useMemo(() => SkeletonUtils.clone(scene), [scene]);
