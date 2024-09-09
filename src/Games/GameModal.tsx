@@ -10,55 +10,49 @@ const GameModal: React.FC<GameModalProps> = ({ isOpen, onClose }) => {
 
   useEffect(() => {
     if (isOpen) {
-      // Disable scrolling
       document.body.classList.add('no-scroll');
-      // Create and load the game iframe
       if (iframeRef.current) {
-        iframeRef.current.src = '/game.html'; // Ensure this path points to an HTML file that includes the game script
-        iframeRef.current.style.width = '100%';
-        iframeRef.current.style.height = '100%';
+        iframeRef.current.src = '/game.html';
       }
     } else {
-      // Enable scrolling
       document.body.classList.remove('no-scroll');
     }
 
-    // Clean up when modal is closed
     return () => {
       if (iframeRef.current) {
-        iframeRef.current.src = ''; // Remove the src to unload the iframe content
+        iframeRef.current.src = '';
       }
-      document.body.classList.remove('no-scroll'); // Ensure scrolling is re-enabled
+      document.body.classList.remove('no-scroll');
     };
   }, [isOpen]);
 
   if (!isOpen) return null;
 
   return (
+    <div
+      className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
+      onClick={onClose}
+    >
       <div
-        className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 no-scroll"
-        onClick={onClose}
+        className="relative bg-white rounded-lg shadow-lg"
+        onClick={(e) => e.stopPropagation()}
       >
-        <div
-          className="relative w-[55vw] h-[55vh] bg-white rounded-lg shadow-lg no-scroll"
-          onClick={(e) => e.stopPropagation()} // Prevent closing the modal when clicking inside it
+        <button
+          className="absolute text-gray-500 hover:text-gray-800"
+          onClick={onClose}
         >
-          <button
-            className="absolute top-2 right-2 text-gray-500 hover:text-gray-800"
-            onClick={onClose}
-          >
-            X
-          </button>
-  
-          {/* Game iframe */}
-          <iframe
-            ref={iframeRef}
-            title="Game"
-            style={{ width: '100%', height: '100%', border: 'none' }}
-          ></iframe>
-        </div>
+          X
+        </button>
+
+        {/* Game iframe */}
+        <iframe
+          ref={iframeRef}
+          title="Game"
+          className="w-[90vw] h-[90vw] max-w-[31rem] max-h-[31rem] sm:w-[40rem] sm:h-[40rem] lg:w-[50rem] lg:h-[50rem] border-none block mx-auto"
+        ></iframe>
       </div>
-    );
+    </div>
+  );
 };
 
 export default GameModal;

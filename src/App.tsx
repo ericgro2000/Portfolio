@@ -22,6 +22,7 @@ function App() {
     <Navbar openGameModal={openModal} />
     <Room />
     <About />
+    <Projects/>
     <WorkExperience />
     <GameModal isOpen={isModalOpen} onClose={closeModal} />
   </main>

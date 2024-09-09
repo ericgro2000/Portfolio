@@ -26,7 +26,8 @@
 }
 
 .apple {
-  background-color: hsl(0, 100%, 50%);
+  background-color: #A020F0;
   border: .25px solid black;
-  box-shadow: 0 0 5px rgba(255, 0, 0, 0.8); /* Neon glow effect */
+  box-shadow: 0 0 5px #A020F0; /* Neon glow effect */
 }
+
