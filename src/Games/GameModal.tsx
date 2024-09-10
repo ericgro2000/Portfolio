@@ -12,7 +12,7 @@ const GameModal: React.FC<GameModalProps> = ({ isOpen, onClose }) => {
     if (isOpen) {
       document.body.classList.add('no-scroll');
       if (iframeRef.current) {
-        iframeRef.current.src = '/games/mineSweeper/game.html';
+        iframeRef.current.src = '/games/tetris/game.html';
       }
     } else {
       document.body.classList.remove('no-scroll');
@@ -33,10 +33,10 @@ const GameModal: React.FC<GameModalProps> = ({ isOpen, onClose }) => {
       className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
       onClick={onClose}
     >
-      {/* <div
+      <div
         className="relative bg-bg-transparent rounded-lg shadow-lg"
         onClick={(e) => e.stopPropagation()}
-      > */}
+      >
         <button
   className="absolute right-0 text-gray-500 hover:text-gray-800"
   onClick={onClose}
@@ -51,7 +51,7 @@ const GameModal: React.FC<GameModalProps> = ({ isOpen, onClose }) => {
           className="w-[90vw] h-[90vw] max-w-[41rem] max-h-[41rem] sm:w-[40rem] sm:h-[40rem] lg:w-[50rem] lg:h-[50rem] border-none block mx-auto"
         ></iframe>
       </div>
-    // </div>
+     </div>
   );
 };
 
