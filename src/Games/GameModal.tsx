@@ -12,7 +12,7 @@ const GameModal: React.FC<GameModalProps> = ({ isOpen, onClose }) => {
     if (isOpen) {
       document.body.classList.add('no-scroll');
       if (iframeRef.current) {
-        iframeRef.current.src = '/games/ttfe/game.html';
+        iframeRef.current.src = '/games/mineSweeper/game.html';
       }
     } else {
       document.body.classList.remove('no-scroll');
@@ -33,10 +33,10 @@ const GameModal: React.FC<GameModalProps> = ({ isOpen, onClose }) => {
       className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
       onClick={onClose}
     >
-      <div
-        className="relative bg-white rounded-lg shadow-lg"
+      {/* <div
+        className="relative bg-bg-transparent rounded-lg shadow-lg"
         onClick={(e) => e.stopPropagation()}
-      >
+      > */}
         <button
   className="absolute right-0 text-gray-500 hover:text-gray-800"
   onClick={onClose}

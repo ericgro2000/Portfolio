@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Use viewport height */
+}
+
+.game-container {
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+}
+
+#game-board {
+    display: grid;
+    grid-template-rows: repeat(20, 1fr); /* Use fractions to adapt */
+    grid-template-columns: repeat(12, 1fr); /* Use fractions to adapt */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: #ccc;
+}
+  
+.snake {
+    background-color: green;
+    border: 0.25px solid black;
+}
+  
+.apple {
+    background-color: gray;
+    border: 0.25px solid black;
+}
