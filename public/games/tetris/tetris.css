@@ -146,18 +146,18 @@ body:before {
     }
 }
 
-/* Tetromino (Softer Neon Purple Effect) */
+/* Tetromino (Softer Neon Purple Effect) with Black Border */
 .snake {
     background-color: #b37fff; /* Softer neon purple */
+    border: 1px solid #000000; /* Black border */
     box-shadow: 0 0 7px rgba(179, 127, 255, 0.8), 0 0 14px rgba(179, 127, 255, 0.5);
-    border: 0.25px solid #b37fff;
 }
 
-/* Apple: Softer Neon White Effect */
+/* Apple: Softer Neon White Effect with Black Border */
 .apple {
     background-color: #e0e0e0; /* Light grayish white */
+    border: 1px solid #000000; /* Black border */
     box-shadow: 0 0 7px rgba(224, 224, 224, 0.8), 0 0 14px rgba(224, 224, 224, 0.5);
-    border: 0.25px solid #e0e0e0;
 }
 
 /* Neon effect for text or other UI elements if needed */
