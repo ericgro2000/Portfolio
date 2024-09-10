@@ -10,6 +10,7 @@ import HeroCamera from '../../features/RoomCamera';
 import Target from '../../features/Target';
 import Cube from '../../features/Cube';
 import ReactLogo from '../../features/React';
+import { Obj } from '../../features/Obj';
 
 const Hero = () => {
   const isSmall = useMediaQuery({ maxWidth: 440 });
@@ -50,6 +51,7 @@ const Hero = () => {
               <Target position={sizes.targetPosition} />
               <ReactLogo position={sizes.reactLogoPosition} />
               <Cube position={sizes.cubePosition} /> 
+              <Obj  position={sizes.python}/>
             </group>
 
             <ambientLight intensity={0.49} color={"orange"} />
