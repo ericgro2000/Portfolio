@@ -34,7 +34,7 @@ const GameModal: React.FC<GameModalProps> = ({ isOpen, onClose }) => {
       onClick={onClose}
     >
       <div
-        className="relative bg-bg-transparent rounded-lg shadow-lg"
+        className="relative bg-white rounded-lg shadow-lg"
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -51,7 +51,7 @@ const GameModal: React.FC<GameModalProps> = ({ isOpen, onClose }) => {
           className="w-[90vw] h-[90vw] max-w-[41rem] max-h-[41rem] sm:w-[40rem] sm:h-[40rem] lg:w-[50rem] lg:h-[50rem] border-none block mx-auto"
         ></iframe>
       </div>
-     </div>
+    </div>
   );
 };
 
