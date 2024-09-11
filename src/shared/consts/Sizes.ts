@@ -11,6 +11,7 @@ export const useCalculateSizes = (isSmall: boolean, isMobile: boolean, isTablet:
       targetPosition: isSmall ? [-5, -10, -10] : isMobile ? [-9, -10, -10] : isTablet ? [-11, -7, -10] : [-13, -13, -10],
       pythonRotation:[-Math.PI / 3,0,0],
       pythonPosition: isSmall ? [-11, 4, -39] : isMobile ? [-13, -7, -39] : isTablet ? [-13, -7, -39] : [-20, -7, -39],
+      macBookPosition: isSmall ? [-11, -10, -39] : isMobile ? [-13, -10, -39] : isTablet ? [-13, -10, -39] :[1.5, -5.5, 20],
     };
   }, [isSmall, isMobile, isTablet]); 
 };

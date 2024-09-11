@@ -11,6 +11,7 @@ import Target from '../../features/Target';
 import Cube from '../../features/Cube';
 import ReactLogo from '../../features/React';
 import { Obj } from '../../features/Obj';
+import { Macbook } from '../../features/MacBook';
 
 const Hero = () => {
   const isSmall = useMediaQuery({ maxWidth: 440 });
@@ -52,6 +53,7 @@ const Hero = () => {
               <ReactLogo position={sizes.reactLogoPosition} />
               <Cube position={sizes.cubePosition} /> 
               <Obj  position={sizes.pythonPosition} />
+              <Macbook position={sizes.macBookPosition}/>
             </group>
 
             <ambientLight intensity={0.49} color={"orange"} />
