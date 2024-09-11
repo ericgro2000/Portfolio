@@ -21,25 +21,26 @@ export function Obj(props: JSX.IntrinsicElements['group']) {
   // Create a reference to the group
   const groupRef = useRef<THREE.Group>(null);
 
-  useFrame(({ clock }) => {
+useFrame((state, delta) => {
     if (groupRef.current) {
-      const elapsed = clock.getElapsedTime();
-
+      const elapsed = state.clock.elapsedTime;
       // Set constant rotation of 30 degrees along Z-axis
-      groupRef.current.rotation.z = -Math.PI / 6; // 30 degrees Z-axis
+      groupRef.current.rotation.x = -Math.PI / 3; // 30 degrees Z-axis
 
       // Continuous rotation along Y-axis
-      groupRef.current.rotation.y = elapsed * 0.5; // Rotate Y-axis
+      groupRef.current.rotateY( delta); // Rotate Y-axis
 
-      // Create a direction vector for the local Y-axis (0, 1, 0) in object space
-      const direction = new THREE.Vector3(0, 1, 0);
+      // Sinusoidal movement amplitude (up and down)
+      const upDownMovement = Math.sin(elapsed) * 5; // Amplitude of 0.1
 
-      // Apply the object's rotation to this vector (convert to world space)
-      direction.applyQuaternion(groupRef.current.quaternion);
+      // // Reset the position before applying local translation
+      // groupRef.current.position.set(0, 0, 0); // Reset position to avoid accumulation of movement
 
-      // Move the object up and down along its local Y-axis
-      const upDownMovement = Math.sin(elapsed) * 0.2; // Amplitude of 0.5
-      groupRef.current.position.addScaledVector(direction, upDownMovement);
+      // // Create a direction vector for the local Y-axis (up-down movement)
+      // const direction = new THREE.Vector3(0, 1, 0);
+
+      // // Translate the object along its local Y-axis
+      // groupRef.current.translateOnAxis(direction, upDownMovement);
     }
   });
 

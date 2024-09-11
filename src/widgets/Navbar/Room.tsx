@@ -51,7 +51,7 @@ const Hero = () => {
               <Target position={sizes.targetPosition} />
               <ReactLogo position={sizes.reactLogoPosition} />
               <Cube position={sizes.cubePosition} /> 
-              <Obj  position={sizes.python}/>
+              <Obj  position={sizes.pythonPosition} />
             </group>
 
             <ambientLight intensity={0.49} color={"orange"} />
