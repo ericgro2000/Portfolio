@@ -56,8 +56,8 @@ const Hero = () => {
               <Macbook position={sizes.macBookPosition}/>
             </group>
 
-            <ambientLight intensity={0.49} color={"orange"} />
-            <directionalLight position={[25, 3, 9]} intensity={2} />
+            <ambientLight intensity={0.79} color={"orange"} />
+            <directionalLight position={[25, 3, 9]} intensity={3} />
           </Suspense>
         </Canvas>
       </div>
