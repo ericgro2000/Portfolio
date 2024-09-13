@@ -23,7 +23,7 @@ export function Obj(props: any) {
 
 useFrame((state, delta) => {
     if (groupRef.current) {
-      const elapsed = state.clock.elapsedTime;
+      // const elapsed = state.clock.elapsedTime;
       // Set constant rotation of 30 degrees along Z-axis
       groupRef.current.rotation.x = -Math.PI / 3; // 30 degrees Z-axis
 
@@ -31,7 +31,7 @@ useFrame((state, delta) => {
       groupRef.current.rotateY( delta); // Rotate Y-axis
 
       // Sinusoidal movement amplitude (up and down)
-      const upDownMovement = Math.sin(elapsed) * 5; // Amplitude of 0.1
+      // const upDownMovement = Math.sin(elapsed) * 5; // Amplitude of 0.1
 
       // // Reset the position before applying local translation
       // groupRef.current.position.set(0, 0, 0); // Reset position to avoid accumulation of movement
