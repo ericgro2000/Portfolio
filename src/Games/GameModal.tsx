@@ -13,10 +13,9 @@ const GameModal: React.FC<GameModalProps> = ({ isOpen, onClose }) => {
       document.body.classList.add('no-scroll');
 
       if (iframeRef.current) {
-        // Generate a random number between 0 and 3
+
         const randomGame = Math.floor(Math.random() * 4);
 
-        // Select the game based on the random number
         let gamePath = '';
         switch (randomGame) {
           case 0:
@@ -26,16 +25,15 @@ const GameModal: React.FC<GameModalProps> = ({ isOpen, onClose }) => {
             gamePath = '/games/tetris/game.html';
             break;
           case 2:
-            gamePath = '/games/ttfe/game.html'; // 2048 game
+            gamePath = '/games/ttfe/game.html'; 
             break;
           case 3:
             gamePath = '/games/minesweeper/game.html';
             break;
           default:
-            gamePath = '/games/tetris/game.html'; // Fallback
+            gamePath = '/games/tetris/game.html'; 
         }
 
-        // Set the iframe source to the selected game
         iframeRef.current.src = gamePath;
       }
     } else {
@@ -68,7 +66,6 @@ const GameModal: React.FC<GameModalProps> = ({ isOpen, onClose }) => {
           <img src="assets/close.svg" alt="close" className="w-6 h-6" />
         </button>
 
-        {/* Game iframe */}
         <iframe
           ref={iframeRef}
           title="Game"

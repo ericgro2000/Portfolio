@@ -14,7 +14,8 @@ type GLTFResult = GLTF & {
     MacBookPro: THREE.MeshStandardMaterial
   }
 }
-export function Macbook(props: JSX.IntrinsicElements['group']) {
+// JSX.IntrinsicElements['group']
+export function Macbook(props:any) {
   const { nodes, materials } = useGLTF('/models/macbook/macbook.glb') as GLTFResult;
   
   // Create a reference to the model's group

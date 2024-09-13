@@ -14,8 +14,8 @@ type GLTFResult = GLTF & {
     ['.001']: THREE.MeshStandardMaterial;
   };
 };
-
-export function Obj(props: JSX.IntrinsicElements['group']) {
+// JSX.IntrinsicElements['group']
+export function Obj(props: any) {
   const { nodes, materials } = useGLTF('/models/python/python.glb') as GLTFResult;
 
   // Create a reference to the group
