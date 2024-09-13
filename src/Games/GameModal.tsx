@@ -11,8 +11,32 @@ const GameModal: React.FC<GameModalProps> = ({ isOpen, onClose }) => {
   useEffect(() => {
     if (isOpen) {
       document.body.classList.add('no-scroll');
+
       if (iframeRef.current) {
-        iframeRef.current.src = '/games/tetris/game.html';
+        // Generate a random number between 0 and 3
+        const randomGame = Math.floor(Math.random() * 4);
+
+        // Select the game based on the random number
+        let gamePath = '';
+        switch (randomGame) {
+          case 0:
+            gamePath = '/games/snake/game.html';
+            break;
+          case 1:
+            gamePath = '/games/tetris/game.html';
+            break;
+          case 2:
+            gamePath = '/games/ttfe/game.html'; // 2048 game
+            break;
+          case 3:
+            gamePath = '/games/minesweeper/game.html';
+            break;
+          default:
+            gamePath = '/games/tetris/game.html'; // Fallback
+        }
+
+        // Set the iframe source to the selected game
+        iframeRef.current.src = gamePath;
       }
     } else {
       document.body.classList.remove('no-scroll');
@@ -38,11 +62,11 @@ const GameModal: React.FC<GameModalProps> = ({ isOpen, onClose }) => {
         onClick={(e) => e.stopPropagation()}
       >
         <button
-  className="absolute right-0 text-gray-500 hover:text-gray-800"
-  onClick={onClose}
->
-  <img src="assets/close.svg" alt="close" className="w-6 h-6" />
-</button>
+          className="absolute right-0 text-gray-500 hover:text-gray-800"
+          onClick={onClose}
+        >
+          <img src="assets/close.svg" alt="close" className="w-6 h-6" />
+        </button>
 
         {/* Game iframe */}
         <iframe
